@@ -1,12 +1,24 @@
 import React from 'react'
 
 export default function Article({article}) {
-    console.log(article);
+
+    const dateParser = (date) => {
+        let newDate = new Date(date).toLocaleDateString('en-EN', {
+            year: "numeric",
+            month: "long",
+            day:"numeric",
+            hour:"numeric",
+            minute:"numeric",
+            second:"numeric",
+        })
+        return newDate
+    };
+
     return (
         <div className="article">
             <div className="card-header">
                 <h3>{article.author}</h3>
-                <em>Posté le {article.date}</em>
+                <em>Post on {dateParser(article.date)}</em>
             </div>
             <p>{article.content}</p>
             <div className="btn-container">
