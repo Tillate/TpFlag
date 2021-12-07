@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import { useState } from 'react/cjs/react.development';
+import DeleteArticle from './DeleteArticle';
 
 export default function Article({article}) {
     const [isEditing, setIsEditing] = useState(false);
@@ -54,7 +55,7 @@ export default function Article({article}) {
                 ) : (
                     <button onClick={()=> setIsEditing(true)}>Edit</button>
                 )}
-                <button>Delete</button>
+                <DeleteArticle id={article.id} />
             </div>
         </div>
     )
