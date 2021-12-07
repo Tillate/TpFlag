@@ -10,12 +10,21 @@ export default function News() {
     const [content, setContent] = useState("");
     const [error, setError] = useState(false);
 
+    // const getData = ()=> {
+    //     axios
+    //         .get("http://localhost:3003/articles")
+    //         .then((res) => setNewsData(res.data));
+    // };
+    // useEffect(() => {
+    //     getData();
+    // }, []);
+
     useEffect(() => {
         fetch("http://localhost:3003/articles")
         .then((response) => response.json())
         .then((data) => setNewsData(data))
         .catch((error) => console.log(error));
-    }, [newsData]);
+    }, [author, content]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -32,6 +41,7 @@ export default function News() {
             setError(false);
             setAuthor("");
             setContent("");
+            // getData();
         });
       } 
     };
